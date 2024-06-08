@@ -6,7 +6,9 @@ from pymongo.mongo_client import MongoClient
 app = Flask(__name__)
 
 # Update the URI with your MongoDB Atlas connection string
-uri = "mongodb+srv://vs2379:siddhu@test1.e8e9uvv.mongodb.net/?retryWrites=true&w=majority&appName=test1"
+
+uri = "mongodb+srv://vs2379:siddhu@test1.e8e9uvv.mongodb.net/?retryWrites=true&w=majority&appName=test1&tls=true&tlsAllowInvalidCertificates=true"
+
 
 # Create a new client and connect to the server
 client = MongoClient(uri)
