@@ -5,10 +5,8 @@ from pymongo.mongo_client import MongoClient
 
 app = Flask(__name__)
 
-# Update the URI with your MongoDB Atlas connection string
-
+# Update the URI with your MongoDB Atlas connection string with TLS settings
 uri = "mongodb+srv://vs2379:siddhu@test1.e8e9uvv.mongodb.net/?retryWrites=true&w=majority&appName=test1&tls=true&tlsAllowInvalidCertificates=true"
-
 
 # Create a new client and connect to the server
 client = MongoClient(uri)
@@ -33,9 +31,11 @@ def index():
         except ValueError:
             return 'Invalid date format. Please enter the date in YYYY-MM-DD format.'
 
+        # Use count_documents to get the count of documents
+        document_count = db.finall.count_documents({'last_modified_date': {'$gte': last_modified_date, '$lt': last_modified_date + timedelta(days=1)}})
         documents = db.finall.find({'last_modified_date': {'$gte': last_modified_date, '$lt': last_modified_date + timedelta(days=1)}})
 
-        if documents.count() == 0:
+        if document_count == 0:
             return render_template('index.html', html='<p>No data found for the given date.</p>')
         else:
             html = "<h1>DRDO DATABASE</h1>"
@@ -52,3 +52,4 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
