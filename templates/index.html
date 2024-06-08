@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatShare</title>
+    <link rel="icon" href="/static/images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
+</head>
+
+<style>
+    /* Additional CSS for increasing the size of the unit dropdown */
+    #unit_name {
+        padding: 8px;
+        font-size: 16px; /* Increase font size */
+        width: 150px; /* Increase width */
+    }
+</style>
+</head>
+<body>
+<h1>DRDO  AIRCRAFT LOG IN DATABASE</h1>
+
+<form method="post">
+    <label for="last_modified_date">Enter Last Modified Date (YYYY-MM-DD):</label>
+    <input type="text" name="last_modified_date" id="last_modified_date" required>
+    
+    <label for="unit_name">INS Unit Name:</label>
+    <select name="unit_name" id="unit_name">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    
+    <input type="submit" value="Submit">
+</form>
+
+{% if html %}
+    {{ html | safe }}
+{% endif %}
+</body>
+</html>
